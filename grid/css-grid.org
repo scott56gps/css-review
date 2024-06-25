@@ -1,0 +1,63 @@
+* CSS Grid Notes
+** TODO [[https://www.joshwcomeau.com/css/interactive-guide-to-grid/][Josh Comeau Interactive Tutorial]]
+*** Grid Flow
+To use the Grid layout, you define a parent element that has the following in
+it:
+
+#+begin_src css
+  .parent {
+      display: grid;
+  }
+#+end_src
+
+This creates a single list of elements that fill the width of the parent
+element.
+
+**** Parent Height
+By default, the parent element's height is changed based upon its children.  If
+there are more children, then the grid grows vertically.
+
+When you add a fixed height to the container, then each element keeps an equally
+divided height of the fixed area:
+
+#+begin_src css
+  .parent {
+      display: grid;
+      height: 300px;
+  }
+#+end_src
+
+This fixes a grid region of height 300px.  The children fill to contain that
+area.
+
+*** Grid Construction
+You create more columns by using the grid-template-column property:
+
+#+begin_src css
+  .parent {
+      display: grid;
+      grid-template-column: 25% 75%;
+  }
+#+end_src
+
+This creates 2 columns, the first filling 25% of the space and the other filling
+75% of the space.  This effectively makes a quarter grid layout, the first column
+taking up 1 quarter and the other taking up 3 quarters.
+
+**** 'fr' Fraction measures
+Instead of percentages, you can use fraction measures with the 'fr' unit.
+
+#+begin_src css
+  .parent {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+  }
+#+end_src
+
+This creates the same layout as the one with percentages, above.  What is
+different is that fraction measures respect the contents of the children in the
+grid.  For example, if you had a thin child that had narrow content, when you
+shrink the parent container, the child will shrink down to its content without
+letting the content overflow.  Look at the web site for an example.
+
+https://www.joshwcomeau.com/css/interactive-guide-to-grid/#grid-construction-3
